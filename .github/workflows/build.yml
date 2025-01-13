@@ -25,8 +25,8 @@ jobs:
         AQUA_REG_PW: ${{ secrets.AQUA_REG_PW }}
         SCANNER_TOKEN: ${{ secrets.SCANNER_TOKEN }}
       run: |
-      docker login registry.aquasec.com -u ${{ secrets.AQUA_REG_USER }} -p ${{ secrets.AQUA_REG_PW }}
-      docker run -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:latest-saas scan -H https://3772126de8.cloud.aquasec.com/ -A ${{ secrets.SCANNER_TOKEN }} --local my-demo-image:${{ github.sha }} --socket docker
+        docker login registry.aquasec.com -u ${{ secrets.AQUA_REG_USER }} -p ${{ secrets.AQUA_REG_PW }}
+        docker run -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:latest-saas scan -H https://3772126de8.cloud.aquasec.com/ -A ${{ secrets.SCANNER_TOKEN }} --local my-demo-image:${{ github.sha }} --socket docker
 
     - name: Tag image with Registry
       run: docker tag my-demo-image:${{ github.sha }} quay.io/mmurhamm:${{ github.sha }}

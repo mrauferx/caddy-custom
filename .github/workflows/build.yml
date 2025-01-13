@@ -33,7 +33,7 @@ jobs:
         wget --user ${{ secrets.AQUA_REG_USER }} --password ${{ secrets.AQUA_REG_PW }} https://download.aquasec.com/scanner/2022.4.720/scannercli
         chmod +x scannercli
         sudo mkdir /opt/aquascans
-	      sudo ./scannercli scan -A ${{ secrets.SCANNER_TOKEN }} -H https://3772126de8.cloud.aquasec.com/ my-demo-image:${{ github.sha }} --local
+        sudo ./scannercli scan -A ${{ secrets.SCANNER_TOKEN }} -H https://3772126de8.cloud.aquasec.com/ my-demo-image:${{ github.sha }} --local
 
     - name: Tag image with Registry
       run: docker tag my-demo-image:${{ github.sha }} quay.io/mmurhamm:${{ github.sha }}
